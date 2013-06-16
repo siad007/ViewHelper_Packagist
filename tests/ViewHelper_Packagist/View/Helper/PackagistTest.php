@@ -1,8 +1,9 @@
 <?php
 
-namespace ViewHelper_Packagist\View\Helper;
+namespace ViewHelper_PackagistTest;
 
 use \PHPUnit_Framework_TestCase as TestCase;
+use ViewHelper_Packagist\View\Helper\Packagist;
 
 class PackagistTest extends TestCase
 {
@@ -11,7 +12,7 @@ class PackagistTest extends TestCase
      */
     public function testSearchNoResult()
     {
-        $packagist = new \ViewHelper_Packagist\View\Helper\Packagist();
+        $packagist = new Packagist();
 
         $list = $packagist->search('qwertyqwertz');
 

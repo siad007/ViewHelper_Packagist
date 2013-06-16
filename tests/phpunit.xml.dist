@@ -1,14 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <phpunit bootstrap="bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="ViewHelper_Packagist test suite">
-	    <file>./PackagistTest.php</file>
+	    <file>PackagistTest.php</file>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">../</directory>
-        </whitelist>
-    </filter>
 </phpunit>

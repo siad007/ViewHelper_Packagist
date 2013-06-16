@@ -4,4 +4,7 @@
 	    <file>PackagistTest.php</file>
         </testsuite>
     </testsuites>
+    <whitelist>
+        <directory suffix=".php">../src/</directory>
+    </whitelist>
 </phpunit>

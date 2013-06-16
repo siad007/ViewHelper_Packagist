@@ -2,41 +2,23 @@
 
 namespace ViewHelper_Packagist;
 
-use Zend\Http\ClientStatic as HttpClient;
-use Zend\Json as ResultBody;
-
-class Module extends \Zend\View\Helper\AbstractHelper
+class Module
 {
-    const PACKAGIST_SEARCH = 'https://packagist.org/search.json';
-
-    public function getViewHelperConfig()
+    
+    public function getAutoloaderConfig()
     {
-        return array('services' => array('packagist' => $this));
+        return array(
+            'Zend\Loader\ClassMapAutoloader' => array(__DIR__ . '/autoload_classmap.php'),
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                )
+            ),
+        );
     }
 
-    public function __invoke($string = null)
+    public function getConfig()
     {
-        return $this->search($string);
-    }
-
-    public function search($args = array('q' => ''))
-    {
-        $packagist = ResultBody::decode(HttpClient::get(self::PACKAGIST_SEARCH, $args));
-
-        $html = '<ul id="packagistList">';
-        if ($packagist['total'] === 0) {
-            $html .= '<li class="no-result">No result.</li>';
-        } else {
-            foreach ($packagist['results'] as $package) {
-                $html .=  sprintf(
-                    '<ul class="packagistRow"><li class="packagistName">%s</li><li class="packagistDescription">%s</li><li class="packagistUrl">%s</li><li class="packagistDownloads">%s</li><li class="packagistFavors">%s</li></ul>',
-                    $package
-                );
-            }
-        }
-        $html = '</ul>';
-
-        return $html;
+        return include __DIR__ . '/config/module.config.php';
     }
 }
-

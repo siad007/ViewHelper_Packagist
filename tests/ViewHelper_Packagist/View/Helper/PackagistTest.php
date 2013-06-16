@@ -2,7 +2,9 @@
 
 namespace ViewHelper_Packagist\View\Helper;
 
-class PackagistTest extends PHPUnit_Framework_TestCase
+use \PHPUnit_Framework_TestCase as TestCase;
+
+class PackagistTest extends TestCase
 {
     /**
      *

@@ -1,0 +1,23 @@
+{
+	"name": "siad007/ViewHelper_Packagist",
+	"description": "A Zend Framework module using the Packagist API",
+	"license": "BSD-3-Clause",
+	"type": "library",
+	"keywords": ["zf2", "zendframework"],
+	"homepage": "https://github.com/siad007/ViewHelper_Packagist",
+	"authors": [
+		{
+			"name": "Siad Ardroumli",
+			"email": "siad.ardroumli@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3",
+		"zendframework/zendframework": "2.*"
+	},
+	"autoload": {
+		"classmap": [
+			"./Module.php"
+		]
+	}
+}

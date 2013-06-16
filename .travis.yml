@@ -5,10 +5,11 @@ php:
   - 5.4
 
 before_script:
-  - "composer install --verbose"
+  - composer install --verbose
+  - mkdir -p build/logs
 
-script: phpunit --verbose --coverage-text --configuration tests/
+script:
+  - phpunit --coverage-clover build/logs/clover.xml --verbose --coverage-text --configuration tests/
 
 after_script:
-  - "phpunit --testdox --configuration tests/"
   - php vendor/bin/coveralls

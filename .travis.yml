@@ -10,7 +10,7 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - phpunit --coverage-clover build/logs/clover.xml --bootstrap tests/bootstrap.php
+  - phpunit --coverage-clover build/logs/clover.xml --bootstrap tests/bootstrap.php tests/ViewHelper_Packagist/View/Helper/PackagistTest.php
 
 after_script:
   - php vendor/bin/coveralls

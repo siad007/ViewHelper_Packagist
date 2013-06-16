@@ -1,11 +1,5 @@
 <?php
 
-namespace Zend\View\Helper;
-
-class AbstractHelper
-{
-
-}
 require_once __DIR__ . '/../Module.php';
 
 class PackagistTest extends PHPUnit_Framework_TestCase

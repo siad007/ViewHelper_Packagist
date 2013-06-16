@@ -11,3 +11,4 @@ script: phpunit --verbose --coverage-text --configuration tests/
 
 after_script:
   - "phpunit --testdox --configuration tests/"
+  - php vendor/bin/coveralls

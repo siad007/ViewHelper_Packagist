@@ -11,7 +11,7 @@ before_script:
 
 script:
   - cd test
-  - phpunit --coverage-clover build/logs/clover.xml
+  - phpunit --coverage-clover ../build/logs/clover.xml
   - cd ..
 
 after_script:

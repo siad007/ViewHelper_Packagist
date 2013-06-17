@@ -8,6 +8,12 @@ use Zend\ServiceManager\ServiceManager;
 use Zend\Stdlib\ArrayUtils;
 use RuntimeException;
 
+$loader = include 'vendor/autoload.php';
+
+if (!class_exists('Zend\Loader\AutoloaderFactory')) {
+    throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install --dev`');
+}
+
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
 

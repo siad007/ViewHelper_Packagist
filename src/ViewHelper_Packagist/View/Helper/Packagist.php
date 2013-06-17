@@ -47,7 +47,7 @@ class Packagist extends \Zend\View\Helper\AbstractHelper
         $packagist = ResultBody::decode($body);
 
         $html = '<ul id="packagistList">';
-        if ($packagist['total'] === 0) {
+        if (empty($packagist) || $packagist['total'] === 0) {
             $html .= '<li class="no-result">No result.</li>';
         } else {
             foreach ($packagist['results'] as $package) {

@@ -15,7 +15,7 @@ class PackagistTest extends TestCase
     {
         $packagist = new Packagist();
         $packagist->setHttpClient(new Client(null, array('adapter' => 'Zend\Http\Client\Adapter\Test')));
-        $list = $packagist->search(array('q' => 'qwertyqwertz');
+        $list = $packagist->search(array('q' => 'qwertyqwertz'));
 
         $this->assertEquals('<ul id="packagistList"><li class="no-result">No result.</li></ul>', $list);
     }

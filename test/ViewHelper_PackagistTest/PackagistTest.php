@@ -5,6 +5,7 @@ namespace ViewHelper_PackagistTest;
 use \PHPUnit_Framework_TestCase as TestCase;
 use ViewHelper_Packagist\View\Helper\Packagist;
 use Zend\Http\Client;
+use Zend\Http\Client\Adapter\Test;
 
 class PackagistTest extends TestCase
 {
@@ -17,7 +18,7 @@ class PackagistTest extends TestCase
     public function setUp()
     {
         $this->client = new Client('http://fake');
-        $this->adapter = new \Zend_Http_Client_Adapter_Test();
+        $this->adapter = new Test();
         $this->client->getHttpClient()->setAdapter($this->adapter);
     }
     

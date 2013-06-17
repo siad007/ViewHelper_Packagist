@@ -57,7 +57,7 @@ class Packagist extends \Zend\View\Helper\AbstractHelper
                 );
             }
         }
-        $html = '</ul>';
+        $html .= '</ul>';
 
         return $html;
     }

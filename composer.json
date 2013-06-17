@@ -19,8 +19,8 @@
 	        "satooshi/php-coveralls": "dev-master"
 	},
 	"autoload": {
-		"classmap": [
-			"./Module.php"
-		]
+                "psr-0": {
+                        "ViewHelper_Packagist": "src/"
+                }
 	}
 }

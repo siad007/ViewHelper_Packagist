@@ -1,10 +1,18 @@
 <?php
 
-/**
- * If it does not find its own autoloader,
- * use the autoloader from the application that the module is coupled.
- */
+$files = array(
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/../../../vendor/autoload.php',
+);
 
-if (@!include __DIR__ . '/../vendor/autoload.php') {
-    require __DIR__ . '/../../../vendor/autoload.php';
+foreach ($files as $file) {
+    if (file_exists($file)) {
+        $loader = require __DIR__ . '/../vendor/autoload.php';
+
+        break;
+    }
+}
+
+if (!$loader) {
+    throw new \RuntimeError('vendor/autoload.php not found.');
 }

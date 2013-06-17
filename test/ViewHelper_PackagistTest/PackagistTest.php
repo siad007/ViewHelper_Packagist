@@ -30,15 +30,10 @@ class PackagistTest extends TestCase
     public function searchNoResult()
     {
         $list = $this->packagist->search(array('q' => 'qwertyqwertz'));
-
         $this->assertEquals('<ul id="packagistList"><li class="no-result">No result.</li></ul>', $list);
-    }
-    
-    /**
-     * @test
-     */
-    public function getInstanceWithModule()
-    {
-        $this->assertInstanceOf('ViewHelper_Packagist\View\Helper\Packagist', new \ViewHelper_Packagist\Module);
+        
+        $packagist = new \ViewHelper_Packagist\Module;
+        $list = $packagist->setHttpClient($this->client)->search(array('q' => 'qwertyqwertz'));
+        $this->assertEquals('<ul id="packagistList"><li class="no-result">No result.</li></ul>', $list);
     }
 }

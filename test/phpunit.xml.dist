@@ -1,7 +1,7 @@
 <phpunit bootstrap="Bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="ViewHelper_Packagist test suite">
-	    <file>PackagistTest.php</file>
+	    <directory>./ViewHelper_PackagistTest</directory>
         </testsuite>
     </testsuites>
     <whitelist>

@@ -20,7 +20,8 @@
 	},
 	"autoload": {
                 "psr-0": {
-                        "ViewHelper_Packagist": "src/"
+                        "ViewHelper_Packagist": "src/",
+                        "ViewHelper_PackagistTest": "test/ViewHelper_PackagistTest"
                 },
                 "classmap": [
                         "./Module.php"

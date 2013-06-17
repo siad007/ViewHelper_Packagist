@@ -20,6 +20,8 @@ class PackagistTest extends TestCase
         $this->client = new Client('http://fake');
         $this->adapter = new Test();
         $this->client->setAdapter($this->adapter);
+        $this->packagist = new Packagist();
+        $this->packagist->setHttpClient($this->client);
     }
     
     /**
@@ -27,10 +29,16 @@ class PackagistTest extends TestCase
      */
     public function searchNoResult()
     {
-        $packagist = new Packagist();
-        $packagist->setHttpClient($this->client);
-        $list = $packagist->search(array('q' => 'qwertyqwertz'));
+        $list = $this->packagist->search(array('q' => 'qwertyqwertz'));
 
         $this->assertEquals('<ul id="packagistList"><li class="no-result">No result.</li></ul>', $list);
+    }
+    
+    /**
+     * @test
+     */
+    public function getInstanceWithModule()
+    {
+        $this->assertInstanceOf('ViewHelper_Packagist\View\Helper\Packagist', new \ViewHelper_Packagist\Module);
     }
 }

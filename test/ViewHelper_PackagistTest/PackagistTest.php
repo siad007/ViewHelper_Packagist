@@ -39,6 +39,6 @@ class PackagistTest extends TestCase
     public function getAutoloaderConfig()
     {
         $module = new \ViewHelper_Packagist\Module;
-        $this->assertInternalType('array', $module);
+        $this->assertInternalType('array', $module->getAutoloaderConfig());
     }
 }

@@ -44,7 +44,7 @@ class PackagistTest extends TestCase
         );
         
         $packagist = new Packagist();
-        $packagist->setHttpClient($this->client);
+        $packagist->setHttpClient($this->client->setAdapter($this->adapter));
         $list = $packagist->search(array('q' => 'qwertyqwertz'));
         
         $this->assertEquals('ok', $list);

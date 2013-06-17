@@ -3,7 +3,7 @@
 namespace ViewHelper_Packagist\View\Helper;
 
 use Zend\Http\ClientStatic as HttpClient;
-use Zend\Json as ResultBody;
+use Zend\Json\Json as ResultBody;
 
 class Packagist extends \Zend\View\Helper\AbstractHelper
 {

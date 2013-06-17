@@ -31,9 +31,14 @@ class PackagistTest extends TestCase
     {
         $list = $this->packagist->search(array('q' => 'qwertyqwertz'));
         $this->assertEquals('<ul id="packagistList"><li class="no-result">No result.</li></ul>', $list);
-        
-        $packagist = new \ViewHelper_Packagist\Module;
-        $list = $packagist->setHttpClient($this->client)->search(array('q' => 'qwertyqwertz'));
-        $this->assertEquals('<ul id="packagistList"><li class="no-result">No result.</li></ul>', $list);
+    }
+    
+    /**
+     * @test
+     */
+    public function getAutoloaderConfig()
+    {
+        $module = new \ViewHelper_Packagist\Module;
+        $this->assertInternalType('array', $module);
     }
 }

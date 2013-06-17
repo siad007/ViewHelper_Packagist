@@ -1,17 +1,3 @@
 <?php
 
-namespace ViewHelper_Packagist;
-
-class Module
-{
-    public function getAutoloaderConfig()
-    {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                )
-            ),
-        );
-    }
-}
+require_once __DIR__.'/src/ViewHelper_Packagist/Module.php';

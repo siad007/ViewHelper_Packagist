@@ -19,7 +19,7 @@ class PackagistTest extends TestCase
     {
         $this->client = new Client('http://fake');
         $this->adapter = new Test();
-        $this->client->getHttpClient()->setAdapter($this->adapter);
+        $this->client->setAdapter($this->adapter);
     }
     
     /**

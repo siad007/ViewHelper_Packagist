@@ -4,6 +4,7 @@ namespace ViewHelper_PackagistTest;
 
 use \PHPUnit_Framework_TestCase as TestCase;
 use ViewHelper_Packagist\View\Helper\Packagist;
+use Zend\Json;
 
 class PackagistTest extends TestCase
 {

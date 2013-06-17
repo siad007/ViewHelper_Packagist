@@ -2,8 +2,6 @@
 
 namespace ViewHelper_Packagist;
 
-use Zend\Json;
-
 class Module
 {
     public function getAutoloaderConfig()
@@ -11,7 +9,7 @@ class Module
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . str_replace('\\', '/' , __NAMESPACE__),
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 )
             ),
         );

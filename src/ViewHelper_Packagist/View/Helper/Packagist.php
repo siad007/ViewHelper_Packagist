@@ -7,7 +7,7 @@ use Zend\Json\Json as ResultBody;
 
 class Packagist extends \Zend\View\Helper\AbstractHelper
 {
-    const PACKAGIST_SEARCH = 'https://packagist.org/search.json';
+    const PACKAGIST_SEARCH = 'http://packagist.org/search.json';
 
     public function getViewHelperConfig()
     {

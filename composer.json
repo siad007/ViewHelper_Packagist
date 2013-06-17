@@ -24,7 +24,7 @@
                         "ViewHelper_PackagistTest": "test/ViewHelper_PackagistTest"
                 },
                 "classmap": [
-                        "./Module.php"
+                        "./"
                 ]
 	}
 }

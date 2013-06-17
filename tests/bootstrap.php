@@ -1,5 +1,7 @@
 <?php
 
+define('ZF2_PATH', realpath(__DIR__ . '/../../../vendor/zendframework/zendframework/library/'));
+
 $path = array(
     ZF2_PATH,
     get_include_path(),

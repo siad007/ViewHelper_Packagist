@@ -33,20 +33,4 @@ class PackagistTest extends TestCase
 
         $this->assertEquals('<ul id="packagistList"><li class="no-result">No result.</li></ul>', $list);
     }
-    
-    public function testCallWebServiceWhenSuccessful()
-    {
-        $this->adapter->setResponse(
-            "HTTP/1.1 200 OK" . "\r\n" .
-            "Content-Type: text/html" . "\r\n" .
-            "\r\n" .
-            'ok'
-        );
-        
-        $packagist = new Packagist();
-        $packagist->setHttpClient($this->client->setAdapter($this->adapter));
-        $list = $packagist->search(array('q' => 'qwertyqwertz'));
-        
-        $this->assertEquals('ok', $list);
-    }
 }

@@ -21,6 +21,9 @@
 	"autoload": {
                 "psr-0": {
                         "ViewHelper_Packagist": "src/"
-                }
+                },
+                "classmap": [
+                        "./Module.php"
+                ]
 	}
 }

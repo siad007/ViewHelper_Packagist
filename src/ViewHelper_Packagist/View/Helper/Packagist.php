@@ -24,7 +24,7 @@ class Packagist extends \Zend\View\Helper\AbstractHelper
                 CURLOPT_SSL_VERIFYHOST => false
             ))
         );
-        $this->httpClient = $this->httpClient ?: new HttpClient;
+        $this->httpClient = $this->getHttpClient() ?: new HttpClient;
         $this->httpClient->setAdapter($adapter);
     }
 

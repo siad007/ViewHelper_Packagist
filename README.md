@@ -5,6 +5,31 @@ View Helper for Zend Framework 2 using the Packagist API
 
 ## Project Status
 
-- [![Build Status](https://travis-ci.org/siad007/ViewHelper_Packagist.png?branch=master)](https://travis-ci.org/siad007/ViewHelper_Packagist)
-- [![Coverage Status](https://coveralls.io/repos/siad007/ViewHelper_Packagist/badge.png?branch=master)](https://coveralls.io/r/siad007/ViewHelper_Packagist?branch=master)
-- [![Dependency Status](https://www.versioneye.com/user/projects/51be2d942912f70002002482/badge.png)](https://www.versioneye.com/user/projects/51be2d942912f70002002482)
+[![Build Status](https://travis-ci.org/siad007/ViewHelper_Packagist.png?branch=master)](https://travis-ci.org/siad007/ViewHelper_Packagist) [![Coverage Status](https://coveralls.io/repos/siad007/ViewHelper_Packagist/badge.png?branch=master)](https://coveralls.io/r/siad007/ViewHelper_Packagist?branch=master)
+
+[![Dependency Status](https://www.versioneye.com/user/projects/51be2d942912f70002002482/badge.png)](https://www.versioneye.com/user/projects/51be2d942912f70002002482)
+
+## Usage
+
+```php
+<?php
+// inside a view script
+echo $this->packagist()->search(array('q' => 'ViewHelper_Packagist'));
+
+// will output something like
+<ul id="packagistList">
+    <ul class="packagistRow">
+        <li class="packagistName">
+            <a href="https://packagist.org/packages/siad007/ViewHelper_Packagist">siad007/ViewHelper_Packagist</a>
+        </li>
+        <li class="packagistDescription">View Helper for Zend Framework 2 using the Packagist API</li>
+        <li class="packagistDownloads">123</li>
+        <li class="packagistFavors">0</li>
+    </ul>
+    ...
+</ul>
+```
+
+## License
+
+BSD 3-Clause

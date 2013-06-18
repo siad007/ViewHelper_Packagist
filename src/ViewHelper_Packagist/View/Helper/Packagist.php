@@ -9,6 +9,7 @@ use Zend\Http\Client\Adapter\Curl;
 class Packagist extends \Zend\View\Helper\AbstractHelper
 {
     const PACKAGIST_SEARCH = 'https://packagist.org/search.json';
+    const PACKAGIST_LIST = 'https://packagist.org/list.json';
 
     /**
      * @var HttpClient

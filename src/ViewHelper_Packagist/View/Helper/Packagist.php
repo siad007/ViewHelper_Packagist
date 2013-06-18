@@ -4,6 +4,7 @@ namespace ViewHelper_Packagist\View\Helper;
 
 use Zend\Http\Client as HttpClient;
 use Zend\Json\Json as ResultBody;
+use Zend\Http\Client\Adapter\Curl;
 
 class Packagist extends \Zend\View\Helper\AbstractHelper
 {
@@ -16,7 +17,15 @@ class Packagist extends \Zend\View\Helper\AbstractHelper
 
     public function __construct()
     {
+        $adapter = new Curl;
+        $adapter->setOptions(
+            array('curloptions' => array(
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => false
+            ))
+        );
         $this->httpClient = $this->httpClient ?: new HttpClient;
+        $this->httpClient->setAdapter($adapter);
     }
 
     public function setHttpClient(HttpClient $httpClient)
@@ -44,15 +53,15 @@ class Packagist extends \Zend\View\Helper\AbstractHelper
     public function search($args = array('q' => ''))
     {
         $body = $this->httpClient->setUri(self::PACKAGIST_SEARCH)->setParameterGet($args)->send()->getBody();
-        $packagist = ResultBody::decode($body);
+        $packagist = ResultBody::decode($body, true);
 
         $html = '<ul id="packagistList">';
         if (empty($packagist) || $packagist['total'] === 0) {
             $html .= '<li class="no-result">No result.</li>';
         } else {
             foreach ($packagist['results'] as $package) {
-                $html .= sprintf(
-                    '<ul class="packagistRow"><li class="packagistName">%s</li><li class="packagistDescription">%s</li><li class="packagistUrl">%s</li><li class="packagistDownloads">%s</li><li class="packagistFavors">%s</li></ul>',
+                $html .= vsprintf(
+                    '<ul class="packagistRow"><li class="packagistName"><a href="%3$s">%1$s</a></li><li class="packagistDescription">%2$s</li><li class="packagistDownloads">%4$s</li><li class="packagistFavors">%5$s</li></ul>',
                     $package
                 );
             }

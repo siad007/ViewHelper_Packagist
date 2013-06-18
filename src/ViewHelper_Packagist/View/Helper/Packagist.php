@@ -45,9 +45,9 @@ class Packagist extends \Zend\View\Helper\AbstractHelper
         return array('services' => array('packagist' => $this));
     }
 
-    public function __invoke($string = null)
+    public function __invoke($args = array('q' => ''))
     {
-        return $this->search($string);
+        return $this->search($args);
     }
 
     public function search($args = array('q' => ''))

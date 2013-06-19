@@ -4,7 +4,7 @@
 	"license": "BSD-3-Clause",
 	"type": "library",
 	"keywords": ["zf2", "zendframework"],
-	"homepage": "https://github.com/siad007/ViewHelper_Packagist",
+	"homepage": "http://siad007.github.io/ViewHelper_Packagist/",
 	"authors": [
 		{
 			"name": "Siad Ardroumli",

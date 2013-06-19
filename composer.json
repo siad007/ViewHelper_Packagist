@@ -1,5 +1,5 @@
 {
-	"name": "siad007/ViewHelper_Packagist",
+	"name": "siad007/packagist",
 	"description": "A Zend Framework module using the Packagist API",
 	"license": "BSD-3-Clause",
 	"type": "library",

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ViewHelper_Packagist by siad007</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/siad007/ViewHelper_Packagist">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/siad007/ViewHelper_Packagist/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/siad007/ViewHelper_Packagist/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>ViewHelper_Packagist</h1>
+          <p>View Helper for Zend Framework 2 using the Packagist API</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/siad007">siad007</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="viewhelper_packagist" class="anchor" href="#viewhelper_packagist"><span class="octicon octicon-link"></span></a>ViewHelper_Packagist</h1>
+
+<p>View Helper for Zend Framework 2 using the Packagist API</p>
+
+<h2>
+<a name="project-status" class="anchor" href="#project-status"><span class="octicon octicon-link"></span></a>Project Status</h2>
+
+<p><a href="https://travis-ci.org/siad007/ViewHelper_Packagist"><img src="https://travis-ci.org/siad007/ViewHelper_Packagist.png?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/r/siad007/ViewHelper_Packagist?branch=master"><img src="https://coveralls.io/repos/siad007/ViewHelper_Packagist/badge.png?branch=master" alt="Coverage Status"></a></p>
+
+<p><a href="https://www.versioneye.com/user/projects/51be2d942912f70002002482"><img src="https://www.versioneye.com/user/projects/51be2d942912f70002002482/badge.png" alt="Dependency Status"></a></p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// for a query based search (inside a view script)</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">packagist</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">search</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'q'</span> <span class="o">=&gt;</span> <span class="s1">'ViewHelper_Packagist'</span><span class="p">));</span>
+
+<span class="c1">// will output something like</span>
+<span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"packagistList"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">class</span><span class="o">=</span><span class="s2">"packagistRow"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">class</span><span class="o">=</span><span class="s2">"packagistName"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"https://packagist.org/packages/siad007/ViewHelper_Packagist"</span><span class="o">&gt;</span><span class="nx">siad007</span><span class="o">/</span><span class="nx">ViewHelper_Packagist</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">class</span><span class="o">=</span><span class="s2">"packagistDescription"</span><span class="o">&gt;</span><span class="nx">View</span> <span class="nx">Helper</span> <span class="k">for</span> <span class="nx">Zend</span> <span class="nx">Framework</span> <span class="mi">2</span> <span class="nx">using</span> <span class="nx">the</span> <span class="nx">Packagist</span> <span class="nx">API</span><span class="o">&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">class</span><span class="o">=</span><span class="s2">"packagistDownloads"</span><span class="o">&gt;</span><span class="mi">123</span><span class="o">&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">class</span><span class="o">=</span><span class="s2">"packagistFavors"</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span>
+    <span class="o">...</span>
+<span class="o">&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span>
+
+<span class="c1">// for a tag based search</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">packagist</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">search</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'tags'</span> <span class="o">=&gt;</span> <span class="s1">'zf1'</span><span class="p">));</span>
+
+<span class="c1">// for multiple tags</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">packagist</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">search</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'tags'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'zf1'</span><span class="p">,</span> <span class="s1">'view helper'</span><span class="p">)));</span>
+
+<span class="c1">// for a tag and query based search</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">packagist</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">search</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'q'</span> <span class="o">=&gt;</span> <span class="s1">'view helper'</span><span class="p">,</span> <span class="s1">'tags'</span> <span class="o">=&gt;</span> <span class="s1">'zf1'</span><span class="p">));</span>
+
+<span class="c1">// or the most 15 popular packages</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">packagist</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">search</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'page'</span> <span class="o">=&gt;</span> <span class="s1">'1'</span><span class="p">,</span> <span class="s1">'q'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">));</span>
+</pre></div>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>BSD 3-Clause</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

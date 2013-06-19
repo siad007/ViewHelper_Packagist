@@ -13,7 +13,7 @@ View Helper for Zend Framework 2 using the Packagist API
 
 ```php
 <?php
-// inside a view script
+// for a query based search (inside a view script)
 echo $this->packagist()->search(array('q' => 'ViewHelper_Packagist'));
 
 // will output something like
@@ -28,6 +28,15 @@ echo $this->packagist()->search(array('q' => 'ViewHelper_Packagist'));
     </ul>
     ...
 </ul>
+
+// for a tag based search (inside a view script)
+echo $this->packagist()->search(array('tags' => 'zf1'));
+
+// for a tag and query based search (inside a view script)
+echo $this->packagist()->search(array('q' => 'view helper', 'tags' => 'zf1'));
+
+// or the most 15 popular packages
+echo $this->packagist()->search(array('page' => '1', 'q' => ''));
 ```
 
 ## License

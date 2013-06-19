@@ -5,7 +5,7 @@ View Helper for Zend Framework 2 using the Packagist API
 
 ## Project Status
 
-[![Build Status](https://travis-ci.org/siad007/ViewHelper_Packagist.png?branch=master)](https://travis-ci.org/siad007/ViewHelper_Packagist) [![Coverage Status](https://coveralls.io/repos/siad007/ViewHelper_Packagist/badge.png?branch=master)](https://coveralls.io/r/siad007/ViewHelper_Packagist?branch=master)
+[![Build Status](https://travis-ci.org/siad007/ViewHelper_Packagist.png?branch=master)](https://travis-ci.org/siad007/ViewHelper_Packagist) [![Coverage Status](https://coveralls.io/repos/siad007/ViewHelper_Packagist/badge.png?branch=master)](https://coveralls.io/r/siad007/ViewHelper_Packagist?branch=master) [![Latest Stable Version](https://poser.pugx.org/siad007/packagist/v/stable.png)](https://packagist.org/packages/siad007/packagist) [![Latest Unstable Version](https://poser.pugx.org/siad007/packagist/v/unstable.png)](https://packagist.org/packages/siad007/packagist) [![Total Downloads](https://poser.pugx.org/siad007/packagist/downloads.png)](https://packagist.org/packages/siad007/packagist)
 
 [![Dependency Status](https://www.versioneye.com/user/projects/51be2d942912f70002002482/badge.png)](https://www.versioneye.com/user/projects/51be2d942912f70002002482)
 

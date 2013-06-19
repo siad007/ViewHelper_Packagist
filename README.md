@@ -29,10 +29,13 @@ echo $this->packagist()->search(array('q' => 'ViewHelper_Packagist'));
     ...
 </ul>
 
-// for a tag based search (inside a view script)
+// for a tag based search
 echo $this->packagist()->search(array('tags' => 'zf1'));
 
-// for a tag and query based search (inside a view script)
+// for multiple tags
+echo $this->packagist()->search(array('tags' => array('zf1', 'view helper')));
+
+// for a tag and query based search
 echo $this->packagist()->search(array('q' => 'view helper', 'tags' => 'zf1'));
 
 // or the most 15 popular packages

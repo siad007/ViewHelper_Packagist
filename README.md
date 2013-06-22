@@ -11,6 +11,27 @@ View Helper for Zend Framework 2 using the Packagist API
 
 ## Usage
 
+### Fetch
+
+```php
+<?php
+// fetch a list of all vendor-names/package-names (inside a view script)
+echo $this->packagist()->fetch();
+
+// will output something like
+0x20h/monoconf
+11ya/excelbundle
+11ya/phpexcel
+2085020/api_pingdom
+2085020/zendframework1
+...
+
+// optional use of an other separator than <br />
+echo $this->packagist()->search('|');
+```
+
+### Search
+
 ```php
 <?php
 // for a query based search (inside a view script)

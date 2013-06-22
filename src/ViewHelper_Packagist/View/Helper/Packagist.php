@@ -9,7 +9,7 @@ use Zend\Http\Client\Adapter\Curl;
 class Packagist extends \Zend\View\Helper\AbstractHelper
 {
     const PACKAGIST_SEARCH = 'https://packagist.org/search.json';
-    const PACKAGIST_LIST = 'https://packagist.org/list.json';
+    const PACKAGIST_LIST = 'https://packagist.org/packages/list.json';
 
     /**
      * @var HttpClient
@@ -46,9 +46,22 @@ class Packagist extends \Zend\View\Helper\AbstractHelper
         return array('services' => array('packagist' => $this));
     }
 
-    public function __invoke($args = array('q' => ''))
+    public function __invoke()
     {
-        return $this->search($args);
+        return $this;
+    }
+
+    public function fetch($separator = '<br />')
+    {
+        $body = $this->httpClient->setUri(self::PACKAGIST_LIST)->send()->getBody();
+	$packagist = ResultBody::decode($body, true);
+
+	$html = '';
+	foreach ($packagist['packageNames'] as $package) {
+	    $html .= $package . $separator;
+	}
+
+	return $html;
     }
 
     public function search($args = array('q' => ''))

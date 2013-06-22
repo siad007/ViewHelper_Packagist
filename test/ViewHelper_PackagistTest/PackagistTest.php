@@ -48,6 +48,6 @@ class PackagistTest extends TestCase
     public function fetchPackages()
     {
         $result = $this->packagist->fetch();
-	$this->assertInternalType('string');
+	$this->assertInternalType('string', $result);
     }
 }

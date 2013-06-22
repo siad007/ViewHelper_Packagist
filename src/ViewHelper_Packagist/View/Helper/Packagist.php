@@ -57,6 +57,10 @@ class Packagist extends \Zend\View\Helper\AbstractHelper
 	$packagist = ResultBody::decode($body, true);
 
 	$html = '';
+	if (empty($packagist)) {
+	    return $html;
+	}
+
 	foreach ($packagist['packageNames'] as $package) {
 	    $html .= $package . $separator;
 	}

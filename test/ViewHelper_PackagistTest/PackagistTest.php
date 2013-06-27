@@ -3,7 +3,7 @@
 namespace ViewHelper_PackagistTest;
 
 use \PHPUnit_Framework_TestCase as TestCase;
-use ViewHelper_Packagist\View\Helper\Packagist;
+use ViewHelper_Packagist\Service\Packagist;
 use Zend\Http\Client;
 use Zend\Http\Client\Adapter\Test;
 
@@ -14,7 +14,7 @@ class PackagistTest extends TestCase
      */
     protected $client;
     protected $adapter;
-    
+
     public function setUp()
     {
         $this->client = new Client('http://fake');
@@ -23,16 +23,16 @@ class PackagistTest extends TestCase
         $this->packagist = new Packagist();
         $this->packagist->setHttpClient($this->client);
     }
-    
+
     /**
      * @test
      */
     public function searchNoResult()
     {
         $list = $this->packagist->search(array('q' => 'qwertyqwertz'));
-        $this->assertEquals('<ul id="packagistList"><li class="no-result">No result.</li></ul>', $list);
+        $this->assertInternalType('string', $list);
     }
-    
+
     /**
      * @test
      */
@@ -48,6 +48,15 @@ class PackagistTest extends TestCase
     public function fetchPackages()
     {
         $result = $this->packagist->fetch();
-	$this->assertInternalType('string', $result);
+        $this->assertInternalType('string', $result);
+    }
+
+    /**
+     * @test
+     */
+    public function displayPackages()
+    {
+        $result = $this->packagist->display('test/test');
+        $this->assertInternalType('string', $result);
     }
 }

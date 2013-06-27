@@ -2,76 +2,114 @@
 
 namespace ViewHelper_Packagist\View\Helper;
 
-use Zend\Http\Client as HttpClient;
-use Zend\Json\Json as ResultBody;
-use Zend\Http\Client\Adapter\Curl;
+use Zend\View\Helper\AbstractHelper;
 
-class Packagist extends \Zend\View\Helper\AbstractHelper
+/**
+ * Packagist View Helper.
+ */
+class Packagist extends AbstractHelper
 {
-    const PACKAGIST_SEARCH = 'https://packagist.org/search.json';
-    const PACKAGIST_LIST = 'https://packagist.org/packages/list.json';
+    protected $sm;
+
+    public function __construct($sm)
+    {
+        $this->sm = $sm;
+    }
 
     /**
-     * @var HttpClient
+     * Get view helper config.
+     *
+     * @return multitype:multitype:\ViewHelper_Packagist\View\Helper\Packagist
      */
-    protected $httpClient = null;
-
-    public function __construct()
-    {
-        $adapter = new Curl;
-        $adapter->setOptions(
-            array('curloptions' => array(
-                CURLOPT_SSL_VERIFYPEER => false,
-                CURLOPT_SSL_VERIFYHOST => false
-            ))
-        );
-        $this->httpClient = $this->getHttpClient() ?: new HttpClient;
-        $this->httpClient->setAdapter($adapter);
-    }
-
-    public function setHttpClient(HttpClient $httpClient)
-    {
-        $this->httpClient = $httpClient;
-
-        return $this;
-    }
-
-    public function getHttpClient()
-    {
-        return $this->httpClient;
-    }
-
     public function getViewHelperConfig()
     {
-        return array('services' => array('packagist' => $this));
+        return array(
+            'services' => array(
+                'packagist' => $this
+            )
+        );
     }
 
+    /**
+     * @return \ViewHelper_Packagist\View\Helper\Packagist
+     */
     public function __invoke()
     {
         return $this;
     }
 
-    public function fetch($separator = '<br />')
+    /**
+     * Display a details page from vendor/package string.
+     *
+     * @param string $name
+     *
+     * @return Ambigous <string, mixed>
+     */
+    public function display($name)
     {
-        $body = $this->httpClient->setUri(self::PACKAGIST_LIST)->send()->getBody();
-	$packagist = ResultBody::decode($body, true);
+        $packagist = $this->sm->getServiceLocator()->get('ViewHelper_Packagist\Service\Packagist')->display($name);
 
-	$html = '';
-	if (empty($packagist)) {
-	    return $html;
-	}
+        $html = '';
+        if (empty($packagist)) {
+            return $html;
+        }
 
-	foreach ($packagist['packageNames'] as $package) {
-	    $html .= $package . $separator;
-	}
+        $html .= "<h3>{$name}</h3>";
+        foreach ($packagist['packages'][$name] as $version => $release) {
+            $html .= "<h4><a href='{$release['homepage']}'>{$version}</a></h4>";
+            $html .= "<p><b>{$release['name']}</b> {$release['description']}</p>";
+            $html .= "<p>" . implode(', ', $release['keywords']) . "</p>";
+            $html .= "<p>{$release['version']} ({$release['version_normalized']})</p>";
+            $html .= "<p>".implode(', ', $release['license'])."</p>";
+            foreach ($release['authors'] as $person) {
+                $html .= "<p>".implode(', ', $person)."</p>";
+            }
+            $html .= "<p>".implode(', ', $release['source'])."</p>";
+            $html .= "<p>".implode(', ', $release['dist'])."</p>";
+            $html .= "<p>{$release['type']}</p>";
+            $html .= "<p>{$release['time']}</p>";
+            foreach ($release['autoload'] as $name => $autoloader) {
+                $html .= "<p><b>{$name}</b> ".implode(', ', $autoloader)."</p>";
+            }
+            $html .= print_r($release, true);
+        }
 
-	return $html;
+        return $html;
     }
 
+    /**
+     * Fetch a list of all packages.
+     *
+     * @param string $separator
+     *
+     * @return string
+     */
+    public function fetch($separator = '<br />')
+    {
+        $packagist = $this->sm->getServiceLocator()->get('ViewHelper_Packagist\Service\Packagist')->fetch($separator);
+
+        $html = '';
+        if (empty($packagist)) {
+            return $html;
+        }
+
+        foreach ($packagist['packageNames'] as $package) {
+            $html .= $package . $separator;
+        }
+
+        return $html;
+    }
+
+    /**
+     * Search for packages.
+     *
+     * @param array $args
+     *
+     * @return string
+     */
     public function search($args = array('q' => ''))
     {
-        $body = $this->httpClient->setUri(self::PACKAGIST_SEARCH)->setParameterGet($args)->send()->getBody();
-        $packagist = ResultBody::decode($body, true);
+        $packagist = $this->sm->getServiceLocator()->get('ViewHelper_Packagist\Service\Packagist')->search($args);
 
         $html = '<ul id="packagistList">';
         if (empty($packagist) || $packagist['total'] === 0) {
@@ -79,8 +117,8 @@ class Packagist extends \Zend\View\Helper\AbstractHelper
         } else {
             foreach ($packagist['results'] as $package) {
                 $html .= vsprintf(
-                    '<ul class="packagistRow"><li class="packagistName"><a href="%3$s">%1$s</a></li><li class="packagistDescription">%2$s</li><li class="packagistDownloads">%4$s</li><li class="packagistFavors">%5$s</li></ul>',
-                    $package
+                        '<ul class="packagistRow"><li class="packagistName"><a href="%3$s">%1$s</a></li><li class="packagistDescription">%2$s</li><li class="packagistDownloads">%4$s</li><li class="packagistFavers">%5$s</li></ul>',
+                        $package
                 );
             }
         }

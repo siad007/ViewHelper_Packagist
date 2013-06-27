@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>ViewHelper_Packagist by siad007</title>
+    <title>ZF2 - Packagist by siad007</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -31,27 +31,49 @@
 
       <section>
         <div id="title">
-          <h1>ViewHelper_Packagist</h1>
+          <h1>ZF2 - Packagist</h1>
           <p>View Helper for Zend Framework 2 using the Packagist API</p>
           <hr>
           <span class="credits left">Project maintained by <a href="https://github.com/siad007">siad007</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
         <h1>
-<a name="viewhelper_packagist" class="anchor" href="#viewhelper_packagist"><span class="octicon octicon-link"></span></a>ViewHelper_Packagist</h1>
+<a name="zf2---packagist" class="anchor" href="#zf2---packagist"><span class="octicon octicon-link"></span></a>ZF2 - Packagist</h1>
 
-<p>View Helper for Zend Framework 2 using the Packagist API</p>
+<p>Client and View-Helper-Collection for Zend Framework 2 using the Packagist API</p>
 
 <h2>
 <a name="project-status" class="anchor" href="#project-status"><span class="octicon octicon-link"></span></a>Project Status</h2>
 
-<p><a href="https://travis-ci.org/siad007/ViewHelper_Packagist"><img src="https://travis-ci.org/siad007/ViewHelper_Packagist.png?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/r/siad007/ViewHelper_Packagist?branch=master"><img src="https://coveralls.io/repos/siad007/ViewHelper_Packagist/badge.png?branch=master" alt="Coverage Status"></a></p>
+<p><a href="https://travis-ci.org/siad007/ViewHelper_Packagist"><img src="https://travis-ci.org/siad007/ViewHelper_Packagist.png?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/r/siad007/ViewHelper_Packagist?branch=master"><img src="https://coveralls.io/repos/siad007/ViewHelper_Packagist/badge.png?branch=master" alt="Coverage Status"></a> <a href="https://packagist.org/packages/siad007/packagist"><img src="https://poser.pugx.org/siad007/packagist/v/stable.png" alt="Latest Stable Version"></a> <a href="https://packagist.org/packages/siad007/packagist"><img src="https://poser.pugx.org/siad007/packagist/v/unstable.png" alt="Latest Unstable Version"></a> <a href="https://packagist.org/packages/siad007/packagist"><img src="https://poser.pugx.org/siad007/packagist/downloads.png" alt="Total Downloads"></a></p>
 
 <p><a href="https://www.versioneye.com/user/projects/51be2d942912f70002002482"><img src="https://www.versioneye.com/user/projects/51be2d942912f70002002482/badge.png" alt="Dependency Status"></a></p>
 
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a name="fetch" class="anchor" href="#fetch"><span class="octicon octicon-link"></span></a>Fetch</h3>
+
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// fetch a list of all vendor-names/package-names (inside a view script)</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">packagist</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">();</span>
+
+<span class="c1">// will output something like</span>
+<span class="mh">0x20</span><span class="nx">h</span><span class="o">/</span><span class="nx">monoconf</span>
+<span class="mi">11</span><span class="nx">ya</span><span class="o">/</span><span class="nx">excelbundle</span>
+<span class="mi">11</span><span class="nx">ya</span><span class="o">/</span><span class="nx">phpexcel</span>
+<span class="mi">2085020</span><span class="o">/</span><span class="nx">api_pingdom</span>
+<span class="mi">2085020</span><span class="o">/</span><span class="nx">zendframework1</span>
+<span class="o">...</span>
+
+<span class="c1">// optional use of an other separator than &lt;br /&gt;</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">packagist</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">search</span><span class="p">(</span><span class="s1">'|'</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="search" class="anchor" href="#search"><span class="octicon octicon-link"></span></a>Search</h3>
 
 <div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="c1">// for a query based search (inside a view script)</span>

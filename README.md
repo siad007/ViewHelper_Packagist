@@ -1,7 +1,7 @@
-ViewHelper_Packagist
-====================
+Packagist API Client for ZF2
+============================
 
-View Helper for Zend Framework 2 using the Packagist API
+Packagist API Client and View-Helpers for Zend Framework 2
 
 ## Project Status
 
@@ -9,7 +9,7 @@ View Helper for Zend Framework 2 using the Packagist API
 
 [![Dependency Status](https://www.versioneye.com/user/projects/51be2d942912f70002002482/badge.png)](https://www.versioneye.com/user/projects/51be2d942912f70002002482)
 
-## Usage
+## Usage View Helper
 
 ### Fetch
 
@@ -27,7 +27,28 @@ echo $this->packagist()->fetch();
 ...
 
 // optional use of an other separator than <br />
-echo $this->packagist()->search('|');
+echo $this->packagist()->fetch('|');
+```
+
+### Display
+
+```php
+<?php
+// Displays a package (inside a view script)
+echo $this->packagist()->display('siad007/packagist');
+
+// will output something like
+<ul>
+    <li>siad007/packagist</li>
+        <li>A Zend Framework module using the Packagist API</li>
+        <li>zf2, ZendFramework</li>
+        <li>1.0.0(1.0.0.0)</li>
+        <li>BSD-3-Clause</li>
+        <ul>
+            <li>Siad Ardroumli, siad.ardroumli@gmail.com</li>
+        </ul>
+        ...
+</ul>
 ```
 
 ### Search

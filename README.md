@@ -1,7 +1,7 @@
 Packagist API Client for ZF2
 ============================
 
-Packagist API Client and View-Helpers for Zend Framework 2
+Packagist API Client and View Helpers for Zend Framework 2
 
 ## Project Status
 

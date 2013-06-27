@@ -1,0 +1,37 @@
+<style>
+ul.packagistRow a {
+    color: black;
+	font: Tahoma 20px bold;
+}
+ul.packagistRow {
+    position: relative;
+    list-style: none;
+    display: block;
+    float: left;
+    width: 205px;
+	background-color: #efefaa;
+	min-height: 150px;
+	padding: 5px;
+	margin: 5px;
+}
+.packagistDownloads {
+    position: absolute;
+	top: 130px;
+	left: 180px;
+}
+.packagistFavers {
+    position: absolute;
+	top: 130px;
+	left: 10px;
+}
+</style>
+<div>
+<h1>Packagist Demo</h1>
+
+<ul id="packagistList">
+<?php echo $this->partialLoop('user/view-search-row.phtml', $this->results); ?>
+</ul>
+
+<div style="clear: both;">&nbsp;</div>
+<?php echo $this->paginationControl($this->paginator, 'Elastic', 'user/paginator.phtml'); ?>
+</div>

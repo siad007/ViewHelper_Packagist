@@ -1,0 +1,57 @@
+<style>
+ul.packagistRow a {
+    color: black;
+	font: Tahoma 20px bold;
+}
+ul.packagistRow {
+    position: relative;
+    list-style: none;
+    display: block;
+    float: left;
+    width: 205px;
+	background-color: #efefaa;
+	min-height: 150px;
+	padding: 5px;
+	margin: 5px;
+}
+.packagistDownloads {
+    position: absolute;
+	top: 130px;
+	left: 180px;
+}
+.packagistFavers {
+    position: absolute;
+	top: 130px;
+	left: 10px;
+}
+</style>
+<div>
+<h1>Packagist Demo</h1>
+<ul>
+<?php foreach ($this->packages as $name => $package) : ?>
+    <?php foreach ($package as $entry) : ?>
+        <li><?php echo $entry['name']; ?></li>
+        <li><?php echo $entry['description']; ?></li>
+        <li><?php echo implode(', ', $entry['keywords']); ?></li>
+        <li><?php echo $entry['version']; ?>(<?php echo $entry['version_normalized']; ?>)</li>
+        <li><?php echo implode(', ', $entry['license']); ?></li>
+        <ul>
+        <?php foreach ($entry['authors'] as $person) : ?>
+            <li><?php echo implode(', ', $person); ?></li>
+        <?php endforeach; ?>
+        </ul>
+        <li><?php echo implode(', ', $entry['source']); ?></li>
+        <li><?php echo implode(', ', $entry['dist']); ?></li>
+        <li><?php echo $entry['type']; ?></li>
+        <li><?php echo $entry['time']; ?></li>
+        <ul>
+        <?php foreach ($entry['autoload'] as $name => $autoloader) : ?>
+            <li><b><?php echo $name; ?></b> <?php echo implode(', ', $autoloader); ?></li>
+        <?php endforeach; ?>
+        </ul>
+        <?php print_r($entry, true); ?>
+    <?php endforeach; ?>
+<?php endforeach; ?>
+</ul>
+<div style="clear: both;">&nbsp;</div>
+</div>

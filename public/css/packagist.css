@@ -1,0 +1,25 @@
+ul.packagistRow a {
+    color: black;
+  font: Tahoma 20px bold;
+}
+ul.packagistRow {
+    position: relative;
+    list-style: none;
+    display: block;
+    float: left;
+    width: 205px;
+  background-color: #efefaa;
+  min-height: 150px;
+  padding: 5px;
+  margin: 5px;
+}
+.packagistDownloads {
+    position: absolute;
+  top: 130px;
+  left: 180px;
+}
+.packagistFavers {
+    position: absolute;
+  top: 130px;
+  left: 10px;
+}

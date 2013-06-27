@@ -30,7 +30,7 @@ class PackagistTest extends TestCase
     public function searchNoResult()
     {
         $list = $this->packagist->search(array('q' => 'qwertyqwertz'));
-        $this->assertInternalType('string', $list);
+        $this->assertNull($list);
     }
 
     /**
@@ -48,7 +48,7 @@ class PackagistTest extends TestCase
     public function fetchPackages()
     {
         $result = $this->packagist->fetch();
-        $this->assertInternalType('string', $result);
+        $this->assertNull($result);
     }
 
     /**
@@ -56,7 +56,7 @@ class PackagistTest extends TestCase
      */
     public function displayPackages()
     {
-        $result = $this->packagist->display('test/test');
-        $this->assertInternalType('string', $result);
+        $result = $this->packagist->display(array('p' => 'test/test'));
+        $this->assertNull($result);
     }
 }

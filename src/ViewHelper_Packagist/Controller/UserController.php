@@ -16,9 +16,9 @@ class UserController extends AbstractActionController
     public function searchAction()
     {
         $query = array(
-            'q' => $this->params('query')
+            'q' => $this->params('query'),
+            'page' => $this->params('page')
         );
-        $page = $this->params('page');
 
         $packagist = $this->getServiceLocator()
                 ->get('ViewHelper_Packagist\Service\Packagist')->search($query);

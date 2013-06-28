@@ -1,7 +1,7 @@
 {
 	"name": "siad007/packagist",
-	"description": "A Zend Framework module using the Packagist API",
-	"license": "BSD-3-Clause",
+	"description": "Packagist API Client and View-Helper-Collection for Zend Framework 2",
+	"license": "BSD 3-Clause",
 	"type": "library",
 	"keywords": ["zf2", "zendframework"],
 	"homepage": "http://siad007.github.io/ViewHelper_Packagist/",

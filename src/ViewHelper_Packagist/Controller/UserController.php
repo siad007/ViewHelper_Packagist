@@ -1,10 +1,12 @@
 <?php
 
 namespace ViewHelper_Packagist\Controller;
+
+use ViewHelper_Packagist\Paginator\Adapter\PackagistAdapter;
+
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Paginator\Paginator;
-use Zend\Paginator\Adapter\ArrayAdapter;
 
 class UserController extends AbstractActionController
 {
@@ -23,9 +25,9 @@ class UserController extends AbstractActionController
         $packagist = $this->getServiceLocator()
                 ->get('ViewHelper_Packagist\Service\Packagist')->search($query);
 
-        $paginator = new Paginator(new ArrayAdapter($packagist['results']));
+        $paginator = new Paginator(new PackagistAdapter($packagist));
         $paginator->setCurrentPageNumber($this->params()->fromRoute('page'));
-
+        $paginator::setDefaultItemCountPerPage(15);
         $view = new ViewModel(
                 array(
                     'results' => $packagist['results'],

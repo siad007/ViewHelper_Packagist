@@ -58,7 +58,7 @@ class PackagistTest extends TestCase
      */
     public function displayPackages()
     {
-        $result = $this->packagist->display(array('p' => 'test/test'));
+        $result = $this->packagist->display('test/test');
         $this->assertNull($result);
     }
 }

@@ -37,6 +37,19 @@ class UserController extends AbstractActionController
         return $view;
     }
 
+    public function includesAction()
+    {
+        $packagist = $this->getServiceLocator()
+                ->get('ViewHelper_Packagist\Service\Packagist')->includes($this->params('date'));
+
+        $view = new ViewModel(
+                array(
+                    'packages' => $packagist['packages']
+                ));
+        $view->setTemplate('user/includes.phtml');
+        return $view;
+    }
+
     public function displayAction()
     {
         $vendor = $this->params('vendor');

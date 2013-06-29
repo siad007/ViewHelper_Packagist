@@ -15,6 +15,7 @@ class Packagist implements ServiceLocatorAwareInterface
     const PACKAGIST_SEARCH = 'https://packagist.org/search.json';
     const PACKAGIST_LIST = 'https://packagist.org/packages/list.json';
     const PACKAGIST_DISPLAY = 'https://packagist.org/p/%s.json';
+    const PACKAGIST_INCLUDES = 'https://packagist.org/p/packages-%s.json';
 
     protected $cache = null;
 
@@ -87,6 +88,11 @@ class Packagist implements ServiceLocatorAwareInterface
         return $this->getResult(self::PACKAGIST_SEARCH, $args);
     }
 
+    public function includes($date = '2006')
+    {
+        return $this->getResult(self::PACKAGIST_INCLUDES, $date);
+    }
+
     protected function getResult($uri, $args = '')
     {
         $array = new Serializer;
@@ -95,7 +101,7 @@ class Packagist implements ServiceLocatorAwareInterface
 
         if (!$success) {
             if (is_string($uri) && strpos($uri, '%s')) {
-                $client = $this->httpClient->setUri(sprintf($uri, implode('/', $args)));
+                $client = $this->httpClient->setUri(sprintf($uri, strpos($args, '/') ? implode('/', $args) : $args));
             } else {
                 $client = $this->httpClient->setUri($uri);
             }

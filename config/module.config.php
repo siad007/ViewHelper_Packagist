@@ -36,6 +36,20 @@ return array(
                     ),
                 ),
             ),
+            'packagist-includes' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/packagist/includes[/:date][/:page]',
+                    'constraints' => array(
+                        'date' => '20(0[6-9]|1[0-2])'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'ViewHelper_Packagist\Controller\User',
+                        'action' => 'includes',
+                        'date' => '2006'
+                    ),
+                ),
+            ),
             'packagist-display' => array(
                 'type' => 'segment',
                 'options' => array(

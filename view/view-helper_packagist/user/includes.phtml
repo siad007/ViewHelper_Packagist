@@ -1,0 +1,11 @@
+<h1>Packagist Demo</h1>
+
+<?php
+foreach ($this->packages as $package) :
+
+    echo $this->partialLoop('user/view-display-row.phtml', $package);
+
+endforeach;
+?>
+
+</div>

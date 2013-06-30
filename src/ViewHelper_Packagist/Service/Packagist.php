@@ -101,10 +101,10 @@ class Packagist implements ServiceLocatorAwareInterface
 
         if (!$success) {
             switch ($uri) {
+                case self::PACKAGIST_LIST:
+                    $this->httpClient->setUri($uri);
                 case self::PACKAGIST_SEARCH:
                     $this->httpClient->setParameterGet($args);
-                case self::PACKAGIST_LIST:
-                    $this->httpClient->setUri(sprintf($uri, strpos($args, '/') ? implode('/', $args) : $args));
                 break;
                 case self::PACKAGIST_INCLUDES:
                 case self::PACKAGIST_DISPLAY:

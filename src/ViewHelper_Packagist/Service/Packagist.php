@@ -78,9 +78,9 @@ class Packagist implements ServiceLocatorAwareInterface
         return $this->getResult(self::PACKAGIST_DISPLAY, $name);
     }
 
-    public function fetch($separator = '<br />')
+    public function fetch($vendor = '')
     {
-        return $this->getResult(self::PACKAGIST_LIST, $separator);
+        return $this->getResult(self::PACKAGIST_LIST, $vendor);
     }
 
     public function search($args = array('q' => ''))
@@ -107,6 +107,7 @@ class Packagist implements ServiceLocatorAwareInterface
                 break;
                 case self::PACKAGIST_LIST:
                     $this->httpClient->setUri($uri);
+                    $args === '' ?: $this->httpClient->setParameterGet(array('vendor' => $args));
                 break;
                 case self::PACKAGIST_INCLUDES:
                 case self::PACKAGIST_DISPLAY:

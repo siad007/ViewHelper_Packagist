@@ -84,9 +84,9 @@ class Packagist extends AbstractHelper
      *
      * @return string
      */
-    public function fetch($separator = '<br />')
+    public function fetch($vendor = '', $separator = '<br />')
     {
-        $packagist = $this->sm->getServiceLocator()->get('ViewHelper_Packagist\Service\Packagist')->fetch($separator);
+        $packagist = $this->sm->getServiceLocator()->get('ViewHelper_Packagist\Service\Packagist')->fetch($vendor);
 
         $html = '';
         if (empty($packagist)) {

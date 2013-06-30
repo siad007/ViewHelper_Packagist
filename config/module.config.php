@@ -39,7 +39,7 @@ return array(
             'packagist-includes' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/packagist/includes[/:date][/:page]',
+                    'route' => '/packagist/includes[/:date]',
                     'constraints' => array(
                         'date' => '20(0[6-9]|1[0-2])'
                     ),

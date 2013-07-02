@@ -43,8 +43,6 @@ class PackagistTest extends TestCase
         $this->assertInternalType('array', $module->getAutoloaderConfig());
         $this->assertInternalType('array', $module->getConfig());
         $this->assertInternalType('array', $module->getServiceConfig());
-        $event = new MvcEvent;
-        $this->assertInstanceOf('ViewHelper_Packagist\View\Helper\Packagist', $module->onBootstrap($event));
     }
 
     /**

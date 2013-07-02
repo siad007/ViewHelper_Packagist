@@ -6,6 +6,7 @@ use \PHPUnit_Framework_TestCase as TestCase;
 use ViewHelper_Packagist\Service\Packagist;
 use Zend\Http\Client;
 use Zend\Http\Client\Adapter\Test;
+use Zend\Mvc\MvcEvent;
 
 class PackagistTest extends TestCase
 {
@@ -36,12 +37,14 @@ class PackagistTest extends TestCase
     /**
      * @test
      */
-    public function getAutoloaderConfig()
+    public function moduleConfigs()
     {
         $module = new \ViewHelper_Packagist\Module;
         $this->assertInternalType('array', $module->getAutoloaderConfig());
         $this->assertInternalType('array', $module->getConfig());
         $this->assertInternalType('array', $module->getServiceConfig());
+        $event = new MvcEvent;
+        $this->assertInstanceOf('ViewHelper_Packagist\View\Helper\Packagist', $module->onBootstrap($event));
     }
 
     /**

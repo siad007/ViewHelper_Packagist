@@ -18,6 +18,9 @@
 	"require-dev": {
 	        "satooshi/php-coveralls": "dev-master"
 	},
+	"suggest": {
+        	"zendframework/skeleton-application": "Create a standalone packagist client out of the box."
+    	},
 	"autoload": {
                 "psr-0": {
                         "ViewHelper_Packagist": "src/",
